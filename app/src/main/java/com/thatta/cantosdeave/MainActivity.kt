@@ -46,7 +46,8 @@ class MainActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
             Log.d("api", "metodo de searchview: $query")
 
         }
-        return true    }
+        return true
+    }
 
     override fun onQueryTextChange(newText: String?): Boolean {
         return true

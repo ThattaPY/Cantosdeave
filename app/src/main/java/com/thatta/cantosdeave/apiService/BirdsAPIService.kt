@@ -9,5 +9,4 @@ interface BirdsAPIService {
     @GET("recordings?")
     suspend fun getBirdsNames(@Query("query") country: String): Response<Birds>
 
-
 }

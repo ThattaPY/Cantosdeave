@@ -35,6 +35,8 @@ class BirdsAdapter():
 
             binding.btnPlay.setOnClickListener {
 
+
+
                 Log.d("play", "media player: $mediaPlayer")
                 if (mediaPlayer.isPlaying) {
                     mediaPlayer.stop()

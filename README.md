@@ -1,5 +1,5 @@
 # Cantosdeave
-Android native (Kotlin) App - API REST CONSUME training II
+Android native (Kotlin) Simple App - API REST CONSUME training II
 ---
 This app uses a free API REST JSON response to show results into a recyclerView with an adapter wich have a viewHolder class inside. 
 

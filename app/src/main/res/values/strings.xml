@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Cantos de ave</string>
+    <string name="play_sound">Reproducir sonido</string>
+</resources>

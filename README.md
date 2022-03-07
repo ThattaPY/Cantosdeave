@@ -3,6 +3,8 @@ Android native (Kotlin) Simple App - API REST CONSUME training II
 ---
 This app uses a free API REST JSON response to show results into a recyclerView with an adapter wich have a viewHolder class inside. 
 
+Every row has a button that starts a new activity with the sound and location of the record on the map.
+
 The views uses viewBinding.
 
 The project uses coroutines to load the API REST information in a second thread. 
@@ -10,3 +12,5 @@ The project uses coroutines to load the API REST information in a second thread.
 The API REST response is made with retrofit.
 
 The architecture follows MVVM archt.
+
+(If clone, remember add your own MAPS_API_KEY in manifest.xml)

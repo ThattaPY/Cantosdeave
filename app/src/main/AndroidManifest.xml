@@ -25,7 +25,7 @@
         -->
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyAGhCOCWQod5XnT9Cv2It50Ywr62JS59KU" />
+            android:value="values" />
 
         <activity
             android:name=".userInterface.ShowItem"

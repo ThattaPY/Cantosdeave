@@ -1,17 +1,18 @@
 package com.thatta.cantosdeave.viewModel
 
+
+import android.app.Activity
 import android.content.Context
-import android.media.AudioAttributes
-import android.media.AudioManager
-import android.media.MediaPlayer
-import android.util.Log
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.thatta.cantosdeave.R
 import com.thatta.cantosdeave.databinding.ItemBirdBinding
 import com.thatta.cantosdeave.model.Bird
+import com.thatta.cantosdeave.userInterface.ShowItem
 
 class BirdsAdapter():
 
@@ -29,36 +30,20 @@ class BirdsAdapter():
 
         private val binding = ItemBirdBinding.bind(view)
 
-        fun playBird(audioUrl: String, mediaPlayer: MediaPlayer) {
+        fun clickBird(id: String, name: String, audioUrl: String, gpsLat: String?,
+                      gpsLng: String?, holder: ViewHolder) {
 
-            Log.d("play", "media player bind view: $mediaPlayer")
+            binding.btnActivity.setOnClickListener {
 
-            binding.btnPlay.setOnClickListener {
+                val activity = holder.itemView.context as Activity
+                val intent = Intent(activity, ShowItem::class.java)
+                intent.putExtra("id", id)
+                intent.putExtra("name", name)
+                intent.putExtra("audioUrl", audioUrl)
+                intent.putExtra("gpsLat", gpsLat?.toDouble())
+                intent.putExtra("gpsLng", gpsLng?.toDouble())
+                startActivity(activity, intent, null)
 
-
-
-                Log.d("play", "media player: $mediaPlayer")
-                if (mediaPlayer.isPlaying) {
-                    mediaPlayer.stop()
-                    mediaPlayer.reset()
-                    Log.d("play", "STOP player")
-                } else {
-
-                mediaPlayer.setAudioAttributes(
-                    AudioAttributes.Builder()
-                        .setLegacyStreamType(AudioManager.STREAM_MUSIC)
-                        .setUsage(AudioAttributes.USAGE_MEDIA)
-                        .setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION)
-                        .build()
-                )
-
-                mediaPlayer.setDataSource(audioUrl)
-                mediaPlayer.prepareAsync()
-                mediaPlayer.setOnPreparedListener(MediaPlayer.OnPreparedListener {
-                    Log.d("play", "prepared async")
-                    mediaPlayer.start()
-                })
-                }
             }
         }
         fun bind(bird: Bird) {
@@ -75,8 +60,7 @@ class BirdsAdapter():
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = birds[position]
         holder.bind(item)
-        var mediaPlayer =  MediaPlayer()
-        holder.playBird(item.soundUrl, mediaPlayer)
+        holder.clickBird(item.id, item.birdName, item.soundUrl, item.gpsLat, item.gpsLng, holder)
 
     }
 

@@ -1,17 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".MainActivity"
     android:orientation="vertical"
     android:gravity="center_horizontal">
 
-    <androidx.appcompat.widget.SearchView
-        android:id="@+id/svCountry"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tilCountry"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+        android:focusedByDefault="false"
+        android:layout_marginTop="16dp"
         android:layout_width="300dp"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        app:helperText="Insert country"
+        android:hint="ej. spain, colombia...">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/tiCountry"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text"/>
+
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnSearch"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        app:icon="@drawable/ic_search"
+        app:iconGravity="textTop" />
+
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvBirds"

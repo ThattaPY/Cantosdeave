@@ -19,7 +19,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.*
 
-class MainActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
+class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
     private val mAdapter: BirdsAdapter = BirdsAdapter()
@@ -35,23 +35,12 @@ class MainActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
         setUpRecyclerView()
         Log.d("api", "se ejecuta app")
 
-        searchByName("")
-
-    }
-
-    override fun onQueryTextSubmit(query: String?): Boolean {
-        if(!query.isNullOrEmpty()){
-
-            searchByName(query.lowercase(Locale.getDefault()))
-            Log.d("api", "metodo de searchview: $query")
-
+        binding.btnSearch.setOnClickListener {
+            searchByName(binding.tiCountry.text.toString())
         }
-        return true
+
     }
 
-    override fun onQueryTextChange(newText: String?): Boolean {
-        return true
-    }
 
     private fun setUpRecyclerView() {
         mRecyclerView = binding.rvBirds
@@ -68,7 +57,7 @@ class MainActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
         CoroutineScope(Dispatchers.IO).launch {
             val call = getRetrofit()
                 .create(BirdsAPIService::class.java)
-                .getBirdsNames("cnt:spain")
+                .getBirdsNames("cnt:$query")
 
             val birdsInfo = call.body()
             Log.d("api", "en la corrutina: $birdsInfo")

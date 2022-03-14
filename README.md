@@ -11,6 +11,4 @@ The project uses coroutines to load the API REST information in a second thread.
 
 The API REST response is made with retrofit.
 
-The architecture follows MVVM archt.
-
 (If clone, remember add your own MAPS_API_KEY in AndroidManifest.xml)

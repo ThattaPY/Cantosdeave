@@ -24,7 +24,6 @@ class BirdsAdapter():
     private lateinit var context: Context
 
     fun birdsRecyclerAdapter(birds: List<Bird>, context: Context) {
-        //this.bird
         this.birds = birds
         this.context = context
     }
@@ -48,9 +47,6 @@ class BirdsAdapter():
                 startActivity(activity, intent, null)
 
             }
-        }
-        fun bind(bird: Birds) {
-            binding.tvBirdName.text = bird.toString()
         }
     }
 

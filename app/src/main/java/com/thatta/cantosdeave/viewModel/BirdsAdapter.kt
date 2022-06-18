@@ -12,16 +12,19 @@ import androidx.recyclerview.widget.RecyclerView
 import com.thatta.cantosdeave.R
 import com.thatta.cantosdeave.databinding.ItemBirdBinding
 import com.thatta.cantosdeave.model.Bird
+import com.thatta.cantosdeave.model.Birds
 import com.thatta.cantosdeave.userInterface.ShowItem
 
 class BirdsAdapter():
 
     RecyclerView.Adapter<BirdsAdapter.ViewHolder>() {
 
-    private var birds: MutableList<Bird> = ArrayList()
+    private lateinit var bird: Bird
+    private lateinit var birds: List<Bird>
     private lateinit var context: Context
 
-    fun birdsRecyclerAdapter(birds: MutableList<Bird>, context: Context) {
+    fun birdsRecyclerAdapter(birds: List<Bird>, context: Context) {
+        //this.bird
         this.birds = birds
         this.context = context
     }
@@ -46,8 +49,8 @@ class BirdsAdapter():
 
             }
         }
-        fun bind(bird: Bird) {
-            binding.tvBirdName.text = bird.birdName
+        fun bind(bird: Birds) {
+            binding.tvBirdName.text = bird.toString()
         }
     }
 
@@ -59,7 +62,6 @@ class BirdsAdapter():
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = birds[position]
-        holder.bind(item)
         holder.clickBird(item.id, item.birdName, item.soundUrl, item.gpsLat, item.gpsLng, holder)
 
     }

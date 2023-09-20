@@ -8,7 +8,6 @@ Every row has a button that starts a new activity with the sound and location of
 The views uses viewBinding.
 
 The project uses coroutines to load the API REST information in a second thread. 
-Project also implements MVVM arch.
 
 The API REST response is made with retrofit.
 
